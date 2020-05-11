@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>所有学生</title>
+</head>
+<body>
+    <table border="1">
+<!--        头部-->
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+<!--        身体-->
+        <tbody>
+            <tr th:each="student:${students}">
+                <td th:text="${student.getSno()}">row 1, cell 1</td>
+                <td th:text="${student.getName()}">row 1, cell 2</td>
+                <td>
+                    <a th:href="@{/student/}+${student.getSno()}" >编辑</a>
+
+                    <form action="test" th:action="@{/student/}+${student.getSno()}" method="post">
+                        <input type="hidden"  name="_method" value="delete">
+                        <input type="submit" value="删除"></input>
+                    </form>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2><a href="/student" >添加员工</a></h2>
+
+</body>
+
+
+
+</html>
