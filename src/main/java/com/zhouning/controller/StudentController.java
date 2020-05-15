@@ -21,6 +21,26 @@ public class StudentController {
     @Autowired
     StudentDao studentDao;
 
+    @PostMapping("/login")
+    public String login(@RequestParam(value = "username") String username,
+                        @RequestParam(value = "password") String password,
+                        Map<String,Object> map, HttpSession session){
+        if (!StringUtils.isEmpty(username)&&"123456".equals(password)){
+            //登录成功,防止表单重复提交，进行重定向
+            session.setAttribute("loginUser", username);
+            return "redirect:/main.html";
+        }else {
+            map.put("msg", "用户名或者密码错误");
+            return "login";
+        }
+    }
+
+    @GetMapping("/hello")
+    @ResponseBody
+    public String hello(){
+        return "hello world";
+    }
+
     /**
      * 查找所有人
      * @param model
