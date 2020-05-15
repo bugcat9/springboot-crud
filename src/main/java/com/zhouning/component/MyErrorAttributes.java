@@ -1,4 +1,4 @@
-package com.zhouning.config;
+package com.zhouning.component;
 
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,6 @@ import java.util.Map;
 public class MyErrorAttributes extends DefaultErrorAttributes {
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
-         //super.getErrorAttributes(webRequest, includeStackTrace);
          Map<String, Object> map = super.getErrorAttributes(webRequest,
                 includeStackTrace);
          map.put("name","zhouning");
