@@ -2,12 +2,16 @@ package com.zhouning.controller;
 
 import com.zhouning.dao.StudentDao;
 import com.zhouning.entities.Student;
+import com.zhouning.exception.UserNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
+import java.util.Map;
 
 /**
  * @author zhouning
@@ -82,6 +86,11 @@ public class StudentController {
         System.out.println(sno);
         studentDao.delete(sno);
         return "redirect:/students";
+    }
+
+    @GetMapping("/exception")
+    public String toException(){
+        throw new UserNotExistException();
     }
 
 }
