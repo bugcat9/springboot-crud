@@ -38,7 +38,7 @@ public class StudentController {
     @GetMapping("/hello")
     @ResponseBody
     public String hello(){
-        return "hello world";
+        return "hello world ....";
     }
 
     /**
